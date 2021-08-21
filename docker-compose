@@ -1,0 +1,26 @@
+
+volumes:
+  dataToHost:
+
+services:
+
+    client:
+        image: ghcr.io/werto87/game_01_client/modern-durak-client
+        volumes:
+            - dataToHost:/client
+        command: sh -c "sed -i  's;{{WEBSOCKET-URL}};${WEBSOCKET_URL};' /client/project.html"
+    server:
+        image: ghcr.io/werto87/game_01_server/modern-durak-server
+        ports:
+         - 55555:55555
+        volumes:
+         - ./secrets:/secrets
+    nginx: 
+        image: nginx:latest
+        volumes:
+          - ./nginx.conf:/etc/nginx/nginx.conf
+          - ./secrets:/secrets
+          - dataToHost:/client          
+        ports:
+            - 80:80
+            - 443:443
