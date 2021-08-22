@@ -1,4 +1,6 @@
 # modern-durak
 
 ## Install
-git clone 
+- Download the repository
+- 
+
