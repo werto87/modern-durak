@@ -19,7 +19,8 @@ services:
         volumes:
           - ${NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
           - ${SECRETS_FOLDER}:/secrets
-          - dataToHost:/client          
+          - dataToHost:/client    
+#        command: sh -c "sed -i  's;{{SERVER_NAME}};${SERVER_NAME};' /etc/nginx/nginx.conf"
         ports:
             - 80:80
             - 443:443
