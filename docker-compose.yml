@@ -14,6 +14,7 @@ services:
          - 55555:55555
         volumes:
          - ${SECRETS_FOLDER}:/secrets
+         - ${DATABASE_FOLDER}:/database
         restart: always 
     nginx: 
         image: nginx:latest
