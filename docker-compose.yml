@@ -14,6 +14,7 @@ services:
          - 55555:55555
         volumes:
          - ${SECRETS_FOLDER}:/secrets
+        restart: always 
     nginx: 
         image: nginx:latest
         volumes:
@@ -23,3 +24,4 @@ services:
         ports:
             - 80:80
             - 443:443
+        restart: always
